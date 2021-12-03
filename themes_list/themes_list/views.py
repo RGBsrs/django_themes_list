@@ -19,4 +19,5 @@ def generate(request):
 class ShowTheme(DetailView):
     model = Theme
     template_name = 'themes_list/theme.html'
+    slug_url_kwarg = 'pk'
     context_object_name = 'theme'

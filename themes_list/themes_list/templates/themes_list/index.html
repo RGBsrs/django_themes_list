@@ -14,7 +14,7 @@
                 <tbody>
                     {% for theme in themes %}
                     <tr>
-                        <td>{{ theme.title }}</td>
+                        <td><a href="{{ theme.get_absolute_url }}">{{ theme.title }}</a></td>
                         <td align="right">
                             <input class="form-check-input" type="checkbox" value="{{theme.id}}" id="defaultCheck" name='{{theme.id}}'>
                             <label class="form-check-label" for="defaultCheck">
