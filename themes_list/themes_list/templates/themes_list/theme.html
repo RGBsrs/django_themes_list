@@ -1,0 +1,9 @@
+{% extends 'themes_list/base.html' %}
+
+{% block content %}
+{% include 'themes_list/nav.html' %}
+<h1>{{theme.title}}</h1>
+
+{{ theme.text|linebreaks }}
+
+{% endblock %}
