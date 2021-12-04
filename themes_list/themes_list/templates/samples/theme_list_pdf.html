@@ -1,0 +1,18 @@
+{% extends 'themes_list/base.html' %}
+{% block content %}
+<div class="container">
+    <div class="row mt-4">
+        {% if themes %}
+        {% for theme in themes %}
+        <div class="col offset-lg-2">
+            <h1>{{theme.title}}</h1>
+            {{ theme.text|linebreaks }}
+        </div>
+        {% endfor %}
+        {% else %}
+        <div class="col offset-lg-2">
+            <h1>Ничего не выбрано</h1>
+        </div>
+    </div>
+</div>
+{% endblock %}

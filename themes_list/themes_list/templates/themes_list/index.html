@@ -12,21 +12,27 @@
                     <tr><h2>Themes List</h2></tr>
                 </thead>
                 <tbody>
+                    {% if themes %}
                     {% for theme in themes %}
                     <tr>
                         <td>{{ forloop.counter }}</td>
                         <td><a href="{{ theme.get_absolute_url }}" style="text-decoration: none;color: #000 !important;">{{ theme.title }}</a></td>
                         <td align="right">
-                            <input class="form-check-input" type="checkbox" value="{{theme.id}}" id="defaultCheck" name='{{theme.id}}'>
-                            <label class="form-check-label" for="defaultCheck">
+                            <input class="form-check-input" type="checkbox" value="{{theme.id}}" id="Checkbox" name='{{theme.id}}'>
+                            <label class="form-check-label" for="Checkbox">
                                 Добавить в PDF файл
                             </label>
                         </td>
                     </tr>
                     {% endfor %}
+                    {% else %}
+                    <tr>
+                        <td>Упс, нет тем</td>
+                    </tr>
+                    {% endif %}
                 </tbody>
             </table>
-            <button class="btn btn-primary" type="submit">Button</button>
+            <button class="btn btn-primary" type="submit">Сгенерировать PDF файл</button>
             </form>
         </div>
     </div>
