@@ -1,5 +1,5 @@
 # django_themes_list
-## App that shows themes list and generate pdf file with chosen themes
+## App that shows themes list and generate pdf file with choosen themes
  
 ### If you want test this project on your local machine run the following commands:
 
