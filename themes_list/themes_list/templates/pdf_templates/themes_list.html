@@ -1,0 +1,17 @@
+{% if themes %}
+{% for theme in themes %}
+<div>   
+    <div>
+        <h1>{{theme.title}}</h1>
+        {{ theme.text|linebreaks }}
+        </div>
+        {% endfor %}
+        {% else %}
+        <div>
+            <h1>Ничего не выбрано</h1>
+        </div>
+        {% endif %}
+    </div>
+</div>
+
+
