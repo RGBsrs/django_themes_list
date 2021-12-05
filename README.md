@@ -22,7 +22,7 @@
 ### Install all dependencies:
 > pip install -r requirements.txt
 
-## For PDFkit package need install additional package as written here link(https://pypi.org/project/pdfkit/)
+### For PDFkit package need install additional package as written here [link](https://pypi.org/project/pdfkit/)
 
 ### Than run migrations:
 
