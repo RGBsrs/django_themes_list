@@ -6,20 +6,6 @@ import pdfkit
 
 from .models import Theme
 
-import os
-import sys
-import subprocess
-import platform
-
-if platform.system() == "Windows":
-    pdfkit_config = pdfkit.configuration(wkhtmltopdf=os.environ.get(
-        'WKHTMLTOPDF_BINARY', 'C:\\Program Files\\wkhtmltopdf\\bin\\wkhtmltopdf.exe'))
-else:
-    os.environ['PATH'] += os.pathsep + os.path.dirname(sys.executable)
-    WKHTMLTOPDF_CMD = subprocess.Popen(['which', os.environ.get('WKHTMLTOPDF_BINARY', 'wkhtmltopdf')],
-                                        stdout=subprocess.PIPE).communicate()[0].strip()
-    pdfkit_config = pdfkit.configuration(wkhtmltopdf=WKHTMLTOPDF_CMD)
-# Create your views here.
 class ThemeHome(ListView):
     model = Theme
     template_name = 'themes_list/index.html'
@@ -51,7 +37,7 @@ def generate_pdf(request):
     }
 
     # генерация файла
-    pdf = pdfkit.from_string(html, False, options, configuration=pdfkit_config)
+    pdf = pdfkit.from_string(html, False, options)
 
     # формирования ответа сервера
     response = HttpResponse(pdf, content_type='application/pdf')
