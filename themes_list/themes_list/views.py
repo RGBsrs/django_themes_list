@@ -26,7 +26,7 @@ def generate_pdf(request):
     pdf = html_to_pdf(template_path=template_path, context=context)
 
     response = HttpResponse(pdf, content_type='application/pdf')
-    response['Content-Disposition'] = 'attachment; filename="report.pdf"'
+    response['Content-Disposition'] = 'attachment; filename="themes.pdf"'
 
     return response
 
