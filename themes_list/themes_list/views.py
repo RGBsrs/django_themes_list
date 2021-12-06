@@ -1,7 +1,7 @@
+from django.shortcuts import redirect
 from django.views.generic import ListView, DetailView
 from django.http import HttpResponse
-from django.template.loader import get_template
-import pdfkit
+
 
 from .models import Theme
 from .utils import get_themes_ids, html_to_pdf
@@ -18,17 +18,20 @@ class ShowTheme(DetailView):
     context_object_name = 'theme'
 
 def generate_pdf(request):
-    themes_ids = get_themes_ids(request=request)
-    themes = Theme.objects.filter(pk__in = themes_ids)
+    if request.method == 'POST':
+        themes_ids = get_themes_ids(request=request)
+        themes = Theme.objects.filter(pk__in = themes_ids)
 
-    template_path = 'pdf_templates/themes_list.html'
-    context = {'themes': themes}
-    pdf = html_to_pdf(template_path=template_path, context=context)
+        template_path = 'pdf_templates/themes_list.html'
+        context = {'themes': themes}
+        pdf = html_to_pdf(template_path=template_path, context=context)
 
-    response = HttpResponse(pdf, content_type='application/pdf')
-    response['Content-Disposition'] = 'attachment; filename="themes.pdf"'
+        response = HttpResponse(pdf, content_type='application/pdf')
+        response['Content-Disposition'] = 'attachment; filename="themes.pdf"'
 
-    return response
+        return response
+    else:
+        return redirect('home')
 
 
 
