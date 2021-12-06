@@ -28,6 +28,9 @@
 
 > python manage.py migrate
 
+### Populate DB:
+> python manage.py loaddata themes.json 
+
 ### And now you can start this app:
 
 > python manage.py runserver
