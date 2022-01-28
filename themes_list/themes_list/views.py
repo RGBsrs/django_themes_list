@@ -1,10 +1,11 @@
 from django.shortcuts import redirect
 from django.views.generic import ListView, DetailView
 from django.http import HttpResponse
+from rest_framework import generics
 
-
-from .models import Theme
-from .utils import get_themes_ids, html_to_pdf
+from themes_list.models import Theme
+from themes_list.utils import get_themes_ids, html_to_pdf
+from themes_list.serializers import ThemeSerializer
 
 class ThemeHome(ListView):
     model = Theme
@@ -34,4 +35,7 @@ def generate_pdf(request):
         return redirect('home')
 
 
-
+class ThemeApiView(generics.CreateAPIView, generics.UpdateAPIView):
+    queryset = Theme.objects.all()
+    serializer_class = ThemeSerializer
+    lookup_filed = 'pk'
